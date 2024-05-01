@@ -19,7 +19,7 @@ export default class Room{
         };
 
         this.setModel();
-        //this.setAnimation();
+        this.setAnimation();
         this.onMouseMove();
         
     }
@@ -82,11 +82,11 @@ export default class Room{
         this.actualRoom.scale.set(0.11, 0.11, 0.11);
     }
 
-/*     setAnimation() {
+     setAnimation() {
         this.mixer = new THREE.AnimationMixer(this.actualRoom);
-        this.swim = this.mixer.clipAction(this.room.animations[0]);
-        this.swim.play();
-    } */
+        this.AC = this.mixer.clipAction(this.room.animations[0]);
+        this.AC.play();
+    } 
 
     onMouseMove(){
         window.addEventListener("mousemove", (e) => {
@@ -108,6 +108,6 @@ export default class Room{
         );
 
         this.actualRoom.rotation.y = this.lerp.current;
-        //this.mixer.update(this.time.delta *0.0009);
+        this.mixer.update(this.time.delta *0.00059);
     }
 }

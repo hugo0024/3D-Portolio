@@ -30,22 +30,33 @@ export default class Environment{
         });
     }
 
-    setSunLight(){
-        this.sunLight = new THREE.DirectionalLight("#ffffff", 3);
-        this.sunLight.castShadow = true;
-        this.sunLight.shadow.camera.far = 20;
-        this.sunLight.shadow.mapSize.set(2048, 2048);
-        this.sunLight.shadow.normalBias = 0.05;
+setSunLight() {
+    this.sunLight = new THREE.DirectionalLight("#ffffff", 3);
+    this.sunLight.castShadow = true;
+    this.sunLight.shadow.camera.far = 100; // Increase the far plane
+    this.sunLight.shadow.camera.near = 0.1; // Adjust the near plane if needed
+    this.sunLight.shadow.mapSize.set(1024, 1024);
+    this.sunLight.shadow.normalBias = 0.05;
 
-        //const helper = new THREE.CameraHelper(this.sunLight.shadow.camera);
-        //this.scene.add(helper);
+    // Set the shadow camera's position and target
+    const shadowCameraPosition = new THREE.Vector3(-1.5, 7, 3);
+    const shadowCameraTarget = new THREE.Vector3(0, 0, 0); // Adjust the target as needed
+    this.sunLight.shadow.camera.position.copy(shadowCameraPosition);
+    this.sunLight.shadow.camera.lookAt(shadowCameraTarget);
 
-        this.sunLight.position.set(-1.5, 7, 3);
-        this.scene.add(this.sunLight);
+    // Update the shadow camera's transformation matrix
+    this.sunLight.shadow.camera.updateProjectionMatrix();
+    this.sunLight.shadow.camera.updateMatrixWorld();
 
-        this.ambientLight = new THREE.AmbientLight("#ffffff", 1);
-        this.scene.add(this.ambientLight);
-    }
+    //const helper = new THREE.CameraHelper(this.sunLight.shadow.camera);
+    //this.scene.add(helper);
+
+    this.sunLight.position.set(-1.5, 7, 3);
+    this.scene.add(this.sunLight);
+
+    this.ambientLight = new THREE.AmbientLight("#ffffff", 1);
+    this.scene.add(this.ambientLight);
+}
 
     switchTheme(theme) {
         // console.log(this.sunLight);
