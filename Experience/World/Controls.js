@@ -149,6 +149,19 @@ export default class Controls {
                         invalidateOnRefresh: true,
                     },
                 }).to(this.camera.orthographicCamera.position, {
+                    x: -4.1,
+                });
+
+                // Forth section -----------------------------------------
+                this.thirdMoveTimeline = new GSAP.timeline({
+                    scrollTrigger: {
+                        trigger: ".forth-move",
+                        start: "top top",
+                        end: "bottom bottom",
+                        scrub: 0.6,
+                        invalidateOnRefresh: true,
+                    },
+                }).to(this.camera.orthographicCamera.position, {
                     y: 1.5,
                     x: -4.1,
                 });

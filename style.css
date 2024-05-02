@@ -356,6 +356,11 @@ svg{
   height: 150px;
   margin-left: auto;
 }
+
+.about-me {
+  border-bottom: 1px solid var(--color-text); /* Add this line */
+  padding-bottom: 64px; /* Add some padding below the line */
+}
 /* Hero section -------------------------------- */
 
 .hero {
