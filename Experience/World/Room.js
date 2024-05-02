@@ -1,16 +1,17 @@
-import * as THREE from 'three';
+import * as THREE from "three";
 import Experience from "../Experience.js";
-import GSAP from 'gsap';
+import GSAP from "gsap";
 import { RectAreaLightHelper } from "three/examples/jsm/helpers/RectAreaLightHelper.js";
 
-export default class Room{
-    constructor(){
+export default class Room {
+    constructor() {
         this.experience = new Experience();
         this.scene = this.experience.scene;
         this.resources = this.experience.resources;
         this.time = this.experience.time;
         this.room = this.resources.items.room;
         this.actualRoom = this.room.scene;
+        this.roomChildren = {};
 
         this.lerp = {
             current: 0,
@@ -21,7 +22,6 @@ export default class Room{
         this.setModel();
         this.setAnimation();
         this.onMouseMove();
-        
     }
 
     setModel() {
@@ -29,24 +29,14 @@ export default class Room{
             child.castShadow = true;
             child.receiveShadow = true;
 
-            if(child instanceof THREE.Group){
+            if (child instanceof THREE.Group) {
                 child.children.forEach((groupchild) => {
                     groupchild.castShadow = true;
                     groupchild.receiveShadow = true;
                 });
             }
 
-/*             if (child.name === "Aquarium") {
-                // console.log(child);
-                child.children[0].material = new THREE.MeshPhysicalMaterial();
-                child.children[0].material.roughness = 0;
-                child.children[0].material.color.set(0x549dd2);
-                child.children[0].material.ior = 3;
-                child.children[0].material.transmission = 1;
-                child.children[0].material.opacity = 1;
-                child.children[0].material.depthWrite = false;
-                child.children[0].material.depthTest = false;
-            }*/
+            // console.log(child);
 
             if (child.name === "Monitor1") {
                 child.children[1].material = new THREE.MeshBasicMaterial({
@@ -55,52 +45,52 @@ export default class Room{
             } 
             if (child.name === "Monitor2") {
                 child.children[1].material = new THREE.MeshBasicMaterial({
-                    map: this.resources.items.screen,
+                    map: this.resources.items.screen2,
                 });
             } 
+
+            // if (
+            //     child.name === "Mailbox" ||
+            //     child.name === "Lamp" ||
+            //     child.name === "FloorFirst" ||
+            //     child.name === "FloorSecond" ||
+            //     child.name === "FloorThird" ||
+            //     child.name === "Dirt" ||
+            //     child.name === "Flower1" ||
+            //     child.name === "Flower2"
+            // ) {
+            //     child.scale.set(0, 0, 0);
+            // }
+
+
         });
 
-/*         const width = 0.5;
-        const height = 0.7;
-        const intensity = 1;
-        const rectLight = new THREE.RectAreaLight(
-            0xffffff,
-            intensity,
-            width,
-            height
-        );
-        rectLight.position.set(7.68244, 7, 0.5);
-        rectLight.rotation.x = -Math.PI / 2;
-        rectLight.rotation.z = Math.PI / 4;
-        this.actualRoom.add(rectLight); */
 
-
-        //const rectLightHelper = new RectAreaLightHelper(rectLight);
-        //rectLight.add(rectLightHelper);
+        // const rectLightHelper = new RectAreaLightHelper(rectLight);
+        // rectLight.add(rectLightHelper);
+        // console.log(this.room);
 
         this.scene.add(this.actualRoom);
         this.actualRoom.scale.set(0.11, 0.11, 0.11);
     }
 
-     setAnimation() {
+    setAnimation() {
         this.mixer = new THREE.AnimationMixer(this.actualRoom);
-        this.AC = this.mixer.clipAction(this.room.animations[0]);
-        this.AC.play();
-    } 
+        this.swim = this.mixer.clipAction(this.room.animations[0]);
+        this.swim.play();
+    }
 
-    onMouseMove(){
+    onMouseMove() {
         window.addEventListener("mousemove", (e) => {
             this.rotation =
                 ((e.clientX - window.innerWidth / 2) * 2) / window.innerWidth;
             this.lerp.target = this.rotation * 0.05;
         });
     }
-    
-    resize(){
 
-    }
+    resize() {}
 
-    update(){
+    update() {
         this.lerp.current = GSAP.utils.interpolate(
             this.lerp.current,
             this.lerp.target,
@@ -108,6 +98,7 @@ export default class Room{
         );
 
         this.actualRoom.rotation.y = this.lerp.current;
-        this.mixer.update(this.time.delta *0.00059);
+
+        this.mixer.update(this.time.delta * 0.0009);
     }
 }

@@ -1,22 +1,21 @@
-import * as THREE from 'three';
+import * as THREE from "three";
 import Experience from "../Experience.js";
-import GSAP from 'gsap';
-import GUI from 'lil-gui';
+import GSAP from "gsap";
+import GUI from "lil-gui";
 
-export default class Environment{
-    constructor(){
+export default class Environment {
+    constructor() {
         this.experience = new Experience();
         this.scene = this.experience.scene;
-        this.resources = this.experience.resources;
 
-        //this.gui = new GUI({ container: document.querySelector(".hero-main") });
+        // this.gui = new GUI({ container: document.querySelector(".hero-main") });
         this.obj = {
             colorObj: { r: 0, g: 0, b: 0 },
             intensity: 3,
         };
 
-        this.setSunLight();
-        //this.setGUI();
+        this.setSunlight();
+        // this.setGUI();
     }
 
     setGUI() {
@@ -30,33 +29,21 @@ export default class Environment{
         });
     }
 
-setSunLight() {
-    this.sunLight = new THREE.DirectionalLight("#ffffff", 3);
-    this.sunLight.castShadow = true;
-    this.sunLight.shadow.camera.far = 100; // Increase the far plane
-    this.sunLight.shadow.camera.near = 0.1; // Adjust the near plane if needed
-    this.sunLight.shadow.mapSize.set(1024, 1024);
-    this.sunLight.shadow.normalBias = 0.05;
+    setSunlight() {
+        this.sunLight = new THREE.DirectionalLight("#ffffff", 3);
+        this.sunLight.castShadow = true;
+        this.sunLight.shadow.camera.far = 20;
+        this.sunLight.shadow.mapSize.set(2048, 2048);
+        this.sunLight.shadow.normalBias = 0.05;
+        // const helper = new THREE.CameraHelper(this.sunLight.shadow.camera);
+        // this.scene.add(helper);
 
-    // Set the shadow camera's position and target
-    const shadowCameraPosition = new THREE.Vector3(-1.5, 7, 3);
-    const shadowCameraTarget = new THREE.Vector3(0, 0, 0); // Adjust the target as needed
-    this.sunLight.shadow.camera.position.copy(shadowCameraPosition);
-    this.sunLight.shadow.camera.lookAt(shadowCameraTarget);
+        this.sunLight.position.set(-1.5, 7, 3);
+        this.scene.add(this.sunLight);
 
-    // Update the shadow camera's transformation matrix
-    this.sunLight.shadow.camera.updateProjectionMatrix();
-    this.sunLight.shadow.camera.updateMatrixWorld();
-
-    //const helper = new THREE.CameraHelper(this.sunLight.shadow.camera);
-    //this.scene.add(helper);
-
-    this.sunLight.position.set(-1.5, 7, 3);
-    this.scene.add(this.sunLight);
-
-    this.ambientLight = new THREE.AmbientLight("#ffffff", 1);
-    this.scene.add(this.ambientLight);
-}
+        this.ambientLight = new THREE.AmbientLight("#ffffff", 1);
+        this.scene.add(this.ambientLight);
+    }
 
     switchTheme(theme) {
         // console.log(this.sunLight);
@@ -79,14 +66,14 @@ setSunLight() {
             });
         } else {
             GSAP.to(this.sunLight.color, {
+                r: 255 / 255,
                 g: 255 / 255,
                 b: 255 / 255,
-                r: 255 / 255,
             });
             GSAP.to(this.ambientLight.color, {
+                r: 255 / 255,
                 g: 255 / 255,
                 b: 255 / 255,
-                r: 255 / 255,
             });
             GSAP.to(this.sunLight, {
                 intensity: 3,
@@ -97,10 +84,7 @@ setSunLight() {
         }
     }
 
-    resize(){
+    resize() {}
 
-    }
-
-    update(){
-    }
+    update() {}
 }

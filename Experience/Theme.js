@@ -1,7 +1,7 @@
 import { EventEmitter } from "events";
 
-export default class Theme extends EventEmitter{
-    constructor(){
+export default class Theme extends EventEmitter {
+    constructor() {
         super();
 
         this.theme = "light";
@@ -10,7 +10,6 @@ export default class Theme extends EventEmitter{
         this.toggleCircle = document.querySelector(".toggle-circle");
 
         this.setEventListeners();
-
     }
 
     setEventListeners() {
@@ -19,7 +18,7 @@ export default class Theme extends EventEmitter{
             this.theme = this.theme === "light" ? "dark" : "light";
             document.body.classList.toggle("dark-theme");
             document.body.classList.toggle("light-theme");
-            //console.log(this.theme);
+            // console.log(this.theme);
 
             this.emit("switch", this.theme);
         });
