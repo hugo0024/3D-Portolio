@@ -355,7 +355,6 @@ svg{
   width: 150px;
   height: 150px;
   margin-left: auto;
-
 }
 /* Hero section -------------------------------- */
 
@@ -458,6 +457,14 @@ svg{
   }
   .hero-second-subheading{
     font-size: 18px;
+  }
+  .navbar {
+    width: calc(100% - 1rem);
+    scale: 0.8;
+  }
+  .uni-logo {
+    width: 100px;
+    height: 100px;
   }
 }
 
