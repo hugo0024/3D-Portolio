@@ -344,6 +344,25 @@ svg{
   font-size: 24px;
 }
 
+.github-link{
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  color: var(--color-text);
+  font-size: 24px;
+  margin-left: 10px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; /* Adjust as needed */
+}
+
+.section-number {
+  margin-right: 10px; /* Adjust as needed */
+}
+
 .header-wrapper {
   display: flex;
   justify-content: space-between;
