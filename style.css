@@ -399,8 +399,9 @@ svg{
 }
 
 .features-list {
-  list-style-type: none; /* Remove the default bullet points */
-  padding: 0; /* Remove the default padding */
+  list-style-type: none;
+  padding: 0;
+  color: var(--color-text);
 }
 
 .features-list li {

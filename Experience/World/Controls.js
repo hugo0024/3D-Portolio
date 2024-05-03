@@ -165,10 +165,23 @@ export default class Controls {
                     x: 2.1,
                 });
 
-                // Givth section -----------------------------------------
-                this.thirdMoveTimeline = new GSAP.timeline({
+                // Fivth section -----------------------------------------
+                this.fivthMoveTimeline = new GSAP.timeline({
                     scrollTrigger: {
                         trigger: ".fivth-move",
+                        start: "top top",
+                        end: "bottom bottom",
+                        scrub: 0.6,
+                        invalidateOnRefresh: true,
+                    },
+                }).to(this.camera.orthographicCamera.position, {
+                    x: -4.1,
+                });
+
+                // Sixth section -----------------------------------------
+                this.sixthMoveTimeline = new GSAP.timeline({
+                    scrollTrigger: {
+                        trigger: ".sixth-move",
                         start: "top top",
                         end: "bottom bottom",
                         scrub: 0.6,
