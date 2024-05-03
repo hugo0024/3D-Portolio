@@ -368,6 +368,14 @@ svg{
   margin-bottom: 50px;
 }
 
+.responsive-gif {
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px; /* Add some spacing between the GIFs */
+}
+
 .features-wrapper {
   margin-top: 20px; /* Adjust the spacing between the image and the features section */
   text-align: left; /* Center align the features section */
