@@ -361,6 +361,41 @@ svg{
   border-bottom: 1px solid var(--color-text); /* Add this line */
   padding-bottom: 64px; /* Add some padding below the line */
 }
+
+.responsive-image {
+  max-width: 100%;
+  max-height: 100%;
+  margin-bottom: 50px;
+}
+
+.features-wrapper {
+  margin-top: 20px; /* Adjust the spacing between the image and the features section */
+  text-align: left; /* Center align the features section */
+}
+
+.features-title {
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 1.8;
+  margin-top: 64px;
+  color: var(--color-text);
+  margin-bottom: 40px; 
+}
+
+.features-list {
+  list-style-type: none; /* Remove the default bullet points */
+  padding: 0; /* Remove the default padding */
+}
+
+.features-list li {
+  margin-bottom: 5px;
+  position: relative;
+  padding-left: 20px;
+  list-style-type: square;
+  margin-left: 50px;
+  margin-bottom: 20px;
+}
+
 /* Hero section -------------------------------- */
 
 .hero {
