@@ -11,6 +11,8 @@ import Renderer from "./Renderer.js";
 
 import World from "./World/World.js";
 import Controls from "./World/Controls.js";
+import Preloader from "./World/Preloader.js";
+
 
 export default class Experience {
     static instance;
@@ -28,6 +30,7 @@ export default class Experience {
         this.resources = new Resources(assets);
         this.theme = new Theme();
         this.world = new World();
+        //this.preloader = new Preloader();
 
         this.sizes.on("resize", () => {
             this.resize();

@@ -351,11 +351,9 @@ svg{
 }
 
 .my-image {
-  display: inline-block;
   width: 220px;
   height: 220px;
   border-radius: 10%;
-  margin-left: auto;
 }
 
 .uni-logo {
@@ -516,7 +514,7 @@ svg{
     font-size: 18px;
   }
   .navbar {
-    width: calc(100% - 1rem);
+    width: calc(100% - 2.3rem);
     scale: 0.8;
   }
   .uni-logo {
