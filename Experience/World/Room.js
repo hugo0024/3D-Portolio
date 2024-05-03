@@ -48,19 +48,23 @@ export default class Room {
                     map: this.resources.items.screen2,
                 });
             } 
-
-            // if (
-            //     child.name === "Mailbox" ||
-            //     child.name === "Lamp" ||
-            //     child.name === "FloorFirst" ||
-            //     child.name === "FloorSecond" ||
-            //     child.name === "FloorThird" ||
-            //     child.name === "Dirt" ||
-            //     child.name === "Flower1" ||
-            //     child.name === "Flower2"
-            // ) {
-            //     child.scale.set(0, 0, 0);
-            // }
+            
+            if (child.name === "Mini_Floor") {
+                child.position.x = -0.289521;
+                child.position.z = 8.83572;
+            }
+            if (
+                child.name === "Mailbox" ||
+                child.name === "Lamp" ||
+                child.name === "FloorFirst" ||
+                child.name === "FloorSecond" ||
+                child.name === "FloorThird" ||
+                child.name === "Dirt" ||
+                child.name === "Flower1" ||
+                child.name === "Flower2"
+            ) {
+                child.scale.set(0, 0, 0);
+            }
 
 
         });
