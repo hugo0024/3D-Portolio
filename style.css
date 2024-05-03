@@ -295,6 +295,14 @@ svg{
   padding: 20% 5%;
 }
 
+.section-detail-wrapper iframe {
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: 500px;
+  margin-bottom: 20px;
+}
+
 .section-heading{
   font-size: 23px;
   font-weight: 700;

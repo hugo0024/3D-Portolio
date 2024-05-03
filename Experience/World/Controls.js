@@ -153,9 +153,22 @@ export default class Controls {
                 });
 
                 // Forth section -----------------------------------------
-                this.thirdMoveTimeline = new GSAP.timeline({
+                this.forthMoveTimeline = new GSAP.timeline({
                     scrollTrigger: {
                         trigger: ".forth-move",
+                        start: "top top",
+                        end: "bottom bottom",
+                        scrub: 0.6,
+                        invalidateOnRefresh: true,
+                    },
+                }).to(this.camera.orthographicCamera.position, {
+                    x: 2.1,
+                });
+
+                // Givth section -----------------------------------------
+                this.thirdMoveTimeline = new GSAP.timeline({
+                    scrollTrigger: {
+                        trigger: ".fivth-move",
                         start: "top top",
                         end: "bottom bottom",
                         scrub: 0.6,
