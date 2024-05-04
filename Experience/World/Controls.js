@@ -6,6 +6,7 @@ import ASScroll from "@ashthornton/asscroll";
 
 export default class Controls {
     constructor() {
+
         this.experience = new Experience();
         this.scene = this.experience.scene;
         this.sizes = this.experience.sizes;
@@ -102,7 +103,7 @@ export default class Controls {
                     { x: 0, y: 0, z: 0 },
                     {
                         x: () => {
-                            return this.sizes.width * 0.0014;
+                            return this.sizes.width * 0.0012;
                         },
                     }
                 );
@@ -189,7 +190,7 @@ export default class Controls {
                     },
                 }).to(this.camera.orthographicCamera.position, {
                     y: 1.5,
-                    x: 1.3,
+                    x: 0.5,
                 });
             },
 
@@ -254,7 +255,7 @@ export default class Controls {
                         invalidateOnRefresh: true,
                     },
                 }).to(this.room.position, {
-                    z: -4.5,
+                    z: -4.0,
                 });
             },
 
