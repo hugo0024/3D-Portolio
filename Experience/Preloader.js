@@ -11,10 +11,19 @@ export default class Preloader extends EventEmitter {
         this.camera = this.experience.camera;
         this.world = this.experience.world;
 
-        this.world.on("ready", () => {
+        this.world.on("worldready", () => {
+            this.setAssets();
             this.playIntro();
+            console.log("ready");
         });
     }
+    setAssets() {
+        this.room = this.experience.world.room.actualRoom;
+        this.roomChildren = this.experience.world.room.roomChildren;
+    }
 
-    playIntro(){}
+    playIntro(){
+        this.emit("enablecontrols");
+
+    }
 }
