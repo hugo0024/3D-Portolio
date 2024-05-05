@@ -345,6 +345,7 @@ svg{
 }
 
 .github-link{
+  position: absolute;
   bottom: 15px;
   left: 0;
   color: var(--color-text);
