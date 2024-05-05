@@ -345,12 +345,18 @@ svg{
 }
 
 .github-link{
-  position: absolute;
   bottom: 15px;
   left: 0;
   color: var(--color-text);
   font-size: 24px;
   margin-left: 10px;
+}
+
+.contact-link{
+  left: 0;
+  color: var(--color-text);
+  font-size: 24px;
+  margin-bottom: 30px;
 }
 
 .section-header {
